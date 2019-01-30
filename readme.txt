@@ -9,7 +9,6 @@
     如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
 
     $ ssh-keygen -t rsa -C "youremail@example.com"
-
     "youremail@example.com"----请换成你自己的邮箱地址
 
 第2步：找到 id_rsa.pub
