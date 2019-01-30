@@ -20,3 +20,6 @@
 
 第3步：添加远程库
     $ git remote add origin git@github.com:panther0/Tedu-MidTermProject.git
+
+
+git stash test (储藏)
