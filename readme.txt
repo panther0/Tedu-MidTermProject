@@ -22,5 +22,4 @@
     $ git remote add origin git@github.com:panther0/Tedu-MidTermProject.git
 
 
-git stash test (储藏)
-add Tom
+
