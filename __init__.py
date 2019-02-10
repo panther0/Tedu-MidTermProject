@@ -3,6 +3,7 @@ from flask import Flask
 from flask import url_for, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 # from app import models,views
+# from flaskr import run
 
 
 # db = SQLAlchemy()
@@ -41,15 +42,23 @@ def create_app(test_config=None):
         # os.makedirs() 可以确保 app.instance_path 存在。 Flask 不会自动 创建实例文件夹，但是必须确保创建这个文件夹，因为 SQLite 数据库文件会被 保存在里面。
     except OSError:
         pass
+
+    # a simple page that says hello
+    @app.route('/inithello')
+    def hello():
+        return 'Hello, World! - from init'
+ 
+    # 导入并注册 蓝图。
+ 
     # 这个函数其读取app的配置参数，将和数据库相关的配置加载到SQLAlchemy对象中
     from . import db
     db.init_app(app)
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
 
-    # 导入并注册 蓝图。
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
+    
     return app

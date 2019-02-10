@@ -75,7 +75,7 @@ def login():
             # session 是一个 dict ，它用于储存横跨请求的值。
             # 当验证 成功后，用户的 id 被储存于一个新的会话中。
             # 会话数据被储存到一个 向浏览器发送的 cookie 中，在后继请求中，浏览器会返回它。 
-            # Flask 会安全对数据进行 签名 以防数据被篡改。
+            # Flask 会安全block进行 签名 以防数据被篡改。
             session.clear()
             session['user_id'] = user['id']
             return redirect(url_for('index'))

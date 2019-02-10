@@ -1,8 +1,17 @@
-from flask import Flask,url_for,request
-app = Flask(__name__)
+from flask import Flask,url_for,request,render_template
+# app = Flask(__name__)
+from __init__ import create_app
+# from flaskr import config
+
+app = create_app()
+
+
+@app.route('/runhello')
+def runhello():
+    return 'Hello, World! - from run.py'
 
 @app.route('/')
-def index():
+def runindex():
     index_page = """
 <html>
 <head>
@@ -16,10 +25,11 @@ def index():
   </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
+  <h1>Hello, world! - from run.py</h1>
 </body>
 </html>"""
     return index_page
+
 
 
 @app.route('/hello')
@@ -42,3 +52,6 @@ with app.test_request_context():
     print(url_for('login'))
     print(url_for('login', next='/'))
     print(url_for('profile', username='John Doe'))
+
+if __name__ == "__main__":
+    app.run(host='127.0.0.1',debug=True)
