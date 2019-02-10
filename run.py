@@ -1,7 +1,7 @@
 from flask import Flask,url_for,request,render_template
 # app = Flask(__name__)
 from __init__ import create_app
-# from flaskr import config
+# from sailings import config
 
 app = create_app()
 

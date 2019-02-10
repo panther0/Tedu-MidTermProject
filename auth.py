@@ -5,7 +5,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+from sailings.db import get_db
 
 # 认证蓝图
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -81,7 +81,7 @@ def login():
             return redirect(url_for('index'))
 
         flash(error)
-
+    # methods='GET'时 返回 login视图
     return render_template('auth/login.html')
 
 # 注册一个 在视图函数之前运行的函数，不论其 URL 是什么。 

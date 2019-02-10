@@ -1,0 +1,4 @@
+关于g对象 和 session 
+    g对象在一次request 的所有地方都可以使用、
+    session 可以跨 request
+

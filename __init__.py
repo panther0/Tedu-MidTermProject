@@ -3,7 +3,7 @@ from flask import Flask
 from flask import url_for, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 # from app import models,views
-# from flaskr import run
+# from sailings import run
 
 
 # db = SQLAlchemy()
@@ -15,7 +15,7 @@ def create_app(test_config=None):
         # SECRET_KEY 是被 Flask 和扩展用于保证数据安全的。在开发过程中， 为了方便可以设置为 'dev' ，但是在发布的时候应当使用一个随机值来 重载它
         SECRET_KEY='dev',
         # DATABASE MYSQL 数据库文件存放在路径。它位于 Flask 用于存放实例的 app.instance_path 之内。
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'sailings.sqlite'),
         # 其格式为：mysql://username:password@server/db？编码
         # 注意默认使用mysqldb连接数据库，要使用pymysql就需要用mysql+pymysql的格式；
         # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/sailingsDB?charset=utf8'
@@ -59,6 +59,9 @@ def create_app(test_config=None):
 
     from . import blog
     app.register_blueprint(blog.bp)
+
+    from . import index
+    app.register_blueprint(index.bp)
     app.add_url_rule('/', endpoint='index')
     
     return app

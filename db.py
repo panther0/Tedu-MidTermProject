@@ -33,7 +33,7 @@ def close_db(e=None):
 
 def init_db():
     db = get_db()
-    # 打开一个文件，该文件名是相对于 flaskr 包的。这样就不需要考虑以后应用具体部署在哪个位置。 g
+    # 打开一个文件，该文件名是相对于 sailings 包的。这样就不需要考虑以后应用具体部署在哪个位置。 g
     # et_db 返回一个数据库连接，用于执行文件中的命令。
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
