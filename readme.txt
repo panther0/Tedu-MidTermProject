@@ -23,3 +23,8 @@
 
 
 
+初始化数据库：
+命令：
+flask init-db
+以下为返回
+Initialized the database.

@@ -8,7 +8,7 @@
   <form method="post">
     <ul>
         {% if g.user %}
-        <li><a href="{{ url_for('index.index') }}">Online Exam</a>
+        <li><a href="{{ url_for('exam.exam') }}">Online Exam</a>
         <li><a href="{{ url_for('index.index') }}">Check Score</a>
         <li><a href="{{ url_for('index.index') }}">Set Questions</a>
         {% endif %}
