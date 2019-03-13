@@ -28,3 +28,19 @@
 flask init-db
 以下为返回
 Initialized the database.
+
+
+添加 Blueprint 步骤：
+    1. 创建 Blueprint 
+       bp = Blueprint('<Blueprint_name>', __name__, url_prefix='/<Blueprint_name>')
+    2. 创建视图函数
+    3. 使用 app.register_blueprint() 导入并注册 蓝图。
+       新的代码放在工厂函数的尾部返回应用之前。
+    4. 添加模板
+
+
+
+Connect to AWS:
+    $ ssh -i "sailingsEDU.pem" ec2-user@ec2-13-229-129-246.ap-southeast-1.compute.amazonaws.com
+
+     

@@ -18,13 +18,13 @@ def create_app(test_config=None):
         DATABASE=os.path.join(app.instance_path, 'sailings.sqlite'),
         # 其格式为：mysql://username:password@server/db？编码
         # 注意默认使用mysqldb连接数据库，要使用pymysql就需要用mysql+pymysql的格式；
-        # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/sailingsDB?charset=utf8'
+        # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/sailingsDB?charset=utf8',
         # 设置是否在每次连接结束后自动提交数据库中的变动。
-        # SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+        # SQLALCHEMY_COMMIT_ON_TEARDOWN = True,
 
         # 下面两项调试阶段启动，部署时关闭
-        # SQLALCHEMY_TRACK_MODIFICATIONS = True
-        # SQLALCHEMY_ECHO = True
+        # SQLALCHEMY_TRACK_MODIFICATIONS = True,
+        # SQLALCHEMY_ECHO = True,
     )
 
     if test_config is None:
