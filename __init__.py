@@ -6,26 +6,40 @@ from flask_sqlalchemy import SQLAlchemy
 # from sailings import run
 
 
-# db = SQLAlchemy()
+# 创建db
 # 生成一个可以操作app数据库的SQLAlchemy实例db
+# flask_sqlalchemy模块并不需要与app一起初始化，可以使用空的代替
+db = SQLAlchemy()
+# # 创建Manager对象并指定要管理哪个应用(app)
+# manager = Manager(app)
+# # 创建Migrate对象,并指定关联的app和db
+# migrate = Migrate(app, db)
+# # 为manager增加命令,允许做数据库的迁移操作
+# # 为manager绑定一个叫 db 的子命令,该子命令执行操作由MigrateCommand来提供
+# manager.add_command('db', MigrateCommand)
+
+
 def create_app(test_config=None):
     # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
+    app=Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         # SECRET_KEY 是被 Flask 和扩展用于保证数据安全的。在开发过程中， 为了方便可以设置为 'dev' ，但是在发布的时候应当使用一个随机值来 重载它
         SECRET_KEY='dev',
         # DATABASE MYSQL 数据库文件存放在路径。它位于 Flask 用于存放实例的 app.instance_path 之内。
-        DATABASE=os.path.join(app.instance_path, 'sailings.sqlite'),
+        # DATABASE=os.path.join(app.instance_path, 'sailings.sqlite'),
         # 其格式为：mysql://username:password@server/db？编码
         # 注意默认使用mysqldb连接数据库，要使用pymysql就需要用mysql+pymysql的格式；
-        # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/sailingsDB?charset=utf8',
+        SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:123456@localhost:3306/sailingsDB?charset=utf8',
         # 设置是否在每次连接结束后自动提交数据库中的变动。
-        # SQLALCHEMY_COMMIT_ON_TEARDOWN = True,
+        SQLALCHEMY_COMMIT_ON_TEARDOWN=True,
 
         # 下面两项调试阶段启动，部署时关闭
-        # SQLALCHEMY_TRACK_MODIFICATIONS = True,
-        # SQLALCHEMY_ECHO = True,
+        SQLALCHEMY_TRACK_MODIFICATIONS=True,
+        SQLALCHEMY_ECHO=True,
     )
+
+
+
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -47,12 +61,21 @@ def create_app(test_config=None):
     @app.route('/inithello')
     def hello():
         return 'Hello, World! - from init'
- 
+
+    # 导入modles
+    from . import models
+
+
     # 导入并注册 蓝图。
- 
+
     # 这个函数其读取app的配置参数，将和数据库相关的配置加载到SQLAlchemy对象中
-    from . import db
+    # from .models import init_app
+    # init_app(app)
     db.init_app(app)
+    db.app = app
+    # db.create_all()
+    # db.drop_all()
+
 
     from . import auth
     app.register_blueprint(auth.bp)
@@ -66,5 +89,5 @@ def create_app(test_config=None):
 
     from . import exam
     app.register_blueprint(exam.bp)
-    
+
     return app

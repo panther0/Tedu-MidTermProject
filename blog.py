@@ -4,7 +4,8 @@ from flask import (
 from werkzeug.exceptions import abort
 
 from sailings.auth import login_required
-from sailings.db import get_db
+from . import db
+from .models import Post
 
 bp = Blueprint('blog', __name__,url_prefix='/blog')
 
@@ -12,12 +13,7 @@ bp = Blueprint('blog', __name__,url_prefix='/blog')
 @bp.route('/blog')
 def blog():
     """Show all the posts, most recent first."""
-    db = get_db()
-    posts = db.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
-    ).fetchall()
+    posts = db.session.query(Post).all()
     return render_template('blog/blog.html', posts=posts)
 
 
@@ -31,12 +27,7 @@ def get_post(id, check_author=True):
     :raise 404: if a post with the given id doesn't exist
     :raise 403: if the current user isn't the author
     """
-    post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
-        (id,)
-    ).fetchone()
+    post = db.session.query(Post).filter_by(id=id).first()
 
     if post is None:
         abort(404, "Post id {0} doesn't exist.".format(id))
@@ -62,18 +53,16 @@ def create():
         if error is not None:
             flash(error)
         else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
-            )
-            db.commit()
+            post = Post()
+            post.title = title
+            post.body = body
+            post.author_id = g.user.id
+            db.session.add(post)
             return redirect(url_for('blog.blog'))
 
     return render_template('blog/create.html')
 
-
+# TODO: change it to ORM
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
