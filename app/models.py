@@ -1,11 +1,9 @@
 # from flask_sqlalchemy import SQLAlchemy
 from . import db
+from sqlalchemy import Column, Integer, String, DateTime, Boolean, TIMESTAMP, func
 
-
-# db = SQLAlchemy()
 
 class User(db.Model):
-    # TODO: fileds here
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80),unique=True)
     password = db.Column(db.String(256),nullable=False)
@@ -17,7 +15,7 @@ class User(db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     author_id = db.Column(db.Integer, nullable=False)
-    created = db.Column(db.TIMESTAMP(True), nullable=False)
+    created = db.Column(db.TIMESTAMP(True), nullable=False, default=func.now())
     title = db.Column(db.Text, nullable=False)
     body = db.Column(db.Text, nullable=False)
 

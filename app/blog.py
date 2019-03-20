@@ -3,7 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from sailings.auth import login_required
+from .auth import login_required
 from . import db
 from .models import Post
 
@@ -14,6 +14,10 @@ bp = Blueprint('blog', __name__,url_prefix='/blog')
 def blog():
     """Show all the posts, most recent first."""
     posts = db.session.query(Post).all()
+    print(posts)
+    print("---------")
+    for p in posts:
+        print(p)
     return render_template('blog/blog.html', posts=posts)
 
 
@@ -51,12 +55,13 @@ def create():
             error = 'Title is required.'
 
         if error is not None:
-            flash(error)
+            flash(error) 
         else:
             post = Post()
             post.title = title
             post.body = body
             post.author_id = g.user.id
+            print(post)
             db.session.add(post)
             return redirect(url_for('blog.blog'))
 

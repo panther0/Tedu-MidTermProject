@@ -1,5 +1,5 @@
 from flask_script import Manager
-from . import create_app, db
+from app import create_app, db
 from flask_migrate import Migrate, MigrateCommand
 
 app = create_app()
@@ -12,9 +12,9 @@ manager.add_command('db', MigrateCommand)
 
 
 # # 创建数据库
-@manager.command
-def create_db():
-    db.create_all()
+# @manager.command
+# def create_db():
+#     db.create_all()
 
 # # 删除数据库
 # @manager.command

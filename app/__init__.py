@@ -34,8 +34,8 @@ def create_app(test_config=None):
         SQLALCHEMY_COMMIT_ON_TEARDOWN=True,
 
         # 下面两项调试阶段启动，部署时关闭
-        SQLALCHEMY_TRACK_MODIFICATIONS=True,
-        SQLALCHEMY_ECHO=True,
+        # SQLALCHEMY_TRACK_MODIFICATIONS=True,
+        # SQLALCHEMY_ECHO=True,
     )
 
 
@@ -72,7 +72,6 @@ def create_app(test_config=None):
     # from .models import init_app
     # init_app(app)
     db.init_app(app)
-    db.app = app
     # db.create_all()
     # db.drop_all()
 
