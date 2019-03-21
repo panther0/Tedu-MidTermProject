@@ -9,7 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(256),nullable=False)
     email = db.Column(db.String(80))
     utype = db.Column(db.String(20), nullable=False, default="user")
-    isActive = db.Column(db.Boolean, nullable-=False, default=True)
+    isActive = db.Column(db.Boolean, nullable=False, default=True)
 
     posts = db.relationship("Post", backref='user', lazy="dynamic")
 
