@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="/03-test/{{ course }}" method="post">
+            {% for test in tests %}
+            <h4>{{test.timu}}</h4>
+            <input type="radio" name="{{test.id}}" value="A">{{test.A}}<br>
+            <input type="radio" name="{{test.id}}" value="B">{{test.B}}<br>
+            <input type="radio" name="{{test.id}}" value="C">{{test.C}}<br>
+            <input type="radio" name="{{test.id}}" value="D">{{test.D}}
+            {% endfor %}
+        <br>
+        <input type="submit" value="交卷">
+        </form>
+
+    </div>
+</body>
+</html>

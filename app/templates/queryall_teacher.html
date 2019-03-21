@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/queryall_teacher" method="post" enctype="multipart/form-data">
+
+    <p>
+        上传图片:<input type=”file” name=”uimg”>
+    </p>
+
+    <p>教师工号:{{ teacher.tid }}</p>
+
+    <p>姓名:{{ teacher.tname }}</p>
+
+    <p>性别:{{ teacher.tsex }}</p>
+
+    <p>出生日期:{{ teacher.tbirthday }}</p>
+
+    <p>
+        职称:{{ teacher.Prof }}
+    </p>
+    <p>
+        联系电话: {{ teacher.tel }}
+    </p>
+    <p>部门:{{ teacher.Depart }}</p>
+    <p>
+        教授课程:{{ teacher.course }}
+    </p>
+    <a href="/upgrate_teacher">
+        <input type="button" value="修改">
+    </a>
+
+
+</form>
+</body>
+</html>

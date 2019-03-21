@@ -89,4 +89,7 @@ def create_app(test_config=None):
     from . import exam
     app.register_blueprint(exam.bp)
 
+    from . import test
+    app.register_blueprint(test.test)
+
     return app

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function del1(id) {
+            console.log("id:"+id)
+            var res = window.confirm("确认删除吗?")
+            url = "/delete_score1?id="+id
+            location.href=url
+        }
+    </script>
+</head>
+<body>
+    <table border="1" width="600">
+        <tr>
+            <th>学生学号</th>
+            <th>课程id</th>
+            <th>课程名称</th>
+        </tr>
+        {% for u in users %}
+            <tr>
+                <td>{{u.sid}}</td>
+                <td>{{u.cid}}</td>
+                <td>{{u.score}}</td>
+                <td>
+                    <a href="/update_score?id={{u.id}}">修改</a>
+                    <a href="#" onclick="del1({{ u.id }})">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

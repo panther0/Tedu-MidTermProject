@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <form action="add_score" method="POST" enctype="multipart/form-data">
+        <p>
+            学生学号：<input type="text" name="sid">
+            {% if flag_score %}
+                该学生成绩已经存在,请重新输入
+            {% endif %}
+        </p>
+        <p>
+            课程id: <input type="text" name="cid">
+        </p>
+        <p>
+            学生成绩：<input type="text" name="score">
+        </p>
+            <input type="submit" value="提交">
+        </p>
+        
+    </form>
+</body>
+</html>

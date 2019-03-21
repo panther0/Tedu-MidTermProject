@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/update_score" method="post">
+        <p>
+            学生学号：<input type="text" name="sid" value="{{user.sid}}">
+            <input type="hidden" name="id" value="{{user.id}}">
+        </p>
+        <p>
+            课程id: <input type="text" name="cid" value="{{user.cid}}">
+        </p>
+        <p>
+            学生成绩：<input type="number" name="score" value="{{user.score}}">
+        </p>
+        <p>
+            <input type="submit" value="修改">
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/delete_score" method="POST">
+        <p>
+            学生学号：<input type="text" name="sid" value="{{user.sid}}">
+            <input type="hidden" name="id" value="{{user.id}}">
+        </p>
+        <p> 
+            课程id: <input type="text" name="cid" value="{{user.cid}}">
+        </p>
+        <p>
+            <input type="submit" value="删除">
+        </p>
+    </form>
+</body>
+</html>

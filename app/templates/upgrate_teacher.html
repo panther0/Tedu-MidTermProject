@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/upgrate_teacher" method="post" enctype="multipart/form-data">
+
+    <p>
+        教师工号: <input type="text" name="tid" value="{{ teacher.tid }}">
+        <input type="hidden" name="id" value="{{ teacher.id }}">
+    </p>
+
+    <p>
+        姓名: <input type="text" name="tname" value="{{ teacher.tname }}">
+    </p>
+
+    <p>
+        性别: <input type="text" name="tsex" value="{{ teacher.tsex }}">
+    </p>
+
+    <p>
+        出生日期: <input type="text" name="tbirthday" value="{{ teacher.tbirthday }}">
+    </p>
+
+    <p>
+        职称: <input type="text" name="prof" value="{{ teacher.Prof }}">
+    </p>
+
+    <p>
+        联系电话: <input type="text" name="tel" value="{{ teacher.tel }}">
+    </p>
+    <p>
+        教授课程: <input type="text" name="course" value="{{ teacher.course_id }}">
+    </p>
+    <p>
+        部门: <input type="text" name="depart" value="{{ teacher.Depart }}">
+    </p>
+
+    <input type="submit" value="提交">
+
+</form>
+</body>
+</html>
