@@ -44,6 +44,9 @@ def register():
         if error is None:
             user.username = username
             user.password = generate_password_hash(password)
+            if request.form['email']:
+                user.email = request.form['email']
+            user.utype = request.form['utype']
             try:
                 db.session.add(user)
             except Exception as ex:
