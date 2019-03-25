@@ -31,7 +31,7 @@ def file_views():
             # 2.2 将文件保存至static目录中
             # basedir = os.path.dirname(__file__)
             basedir = os.path.dirname(os.path.dirname(__file__))
-            upload_path = os.path.join(basedir, 'static
+            upload_path = os.path.join(basedir, 'static')
             mathjx.test_questions(upload_path)
         uname = request.form['uname']
         print('用户名称:' + uname)

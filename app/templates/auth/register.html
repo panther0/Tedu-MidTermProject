@@ -12,19 +12,21 @@
     <input type="password" name="password" id="password" required>
     <label for="email">E-mail</label>
     <input type="text" name="email" id="email">
-
-    <label for="user">
-      <input type="radio" name="utype" id="user" value="user" checked>user
-    </label>
-    <label for="student">
-        <input type="radio" name="utype" id="student" value="student">student
-    </label>
-    <label for="teacher">
-      <input type="radio" name="utype" id="teacher" value="teacher">teacher
-    </label>
-    <label for="admin">
-      <input type="radio" name="utype" id="admin" value="admin">admin
-    </label>
+<div class="utype">
+  
+      <label for="user">
+        <input type="radio" name="utype" id="user" value="user" checked>user
+      </label>
+      <label for="student">
+          <input type="radio" name="utype" id="student" value="student">student
+      </label>
+      <label for="teacher">
+        <input type="radio" name="utype" id="teacher" value="teacher">teacher
+      </label>
+      <label for="admin">
+        <input type="radio" name="utype" id="admin" value="admin">admin
+      </label>
+</div>
     <input type="submit" value="Register">
   </form>
 {% endblock %}

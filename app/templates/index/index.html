@@ -8,11 +8,22 @@
   <form method="post">
     <ul>
         {% if g.user %}
-        <li><a href="{{ url_for('exam.exam') }}">Online Exam</a>
+        <li><a href="{{ url_for('exam.exam', course='math') }}">Online Exam - math</a>
+        <a href="{{ url_for('exam.exam', course='english') }}">Online Exam - english</a>
+          
+          <!-- <select name="course" id="course">
+            <option value="math">math</option>
+            <option value="english">english</option>
+          </select> -->
+        </li>
         <li><a href="{{ url_for('index.index') }}">Check Score</a>
+
+        </li>
         <li><a href="{{ url_for('index.index') }}">Set Questions</a>
+        </li>
         {% endif %}
         <li><a href="{{ url_for('blog.blog') }}">Blog</a>
+        </li>
     </ul>    
   </form>
 {% endblock %}

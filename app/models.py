@@ -2,7 +2,7 @@
 from . import db
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, TIMESTAMP, func
 
-
+# 用户
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80),unique=True)
@@ -16,7 +16,8 @@ class User(db.Model):
 
     def __repr__(self):
         return 'User {0}'.format(self.username)
-    
+
+# 博客    
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created = db.Column(db.TIMESTAMP(True), nullable=False, default=func.now())
@@ -24,8 +25,7 @@ class Post(db.Model):
     body = db.Column(db.Text, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-        
-
+# 考试题        
 class Test(db.Model):
     __tablename__ = 'test'
     id = db.Column(db.Integer, primary_key=True)
@@ -38,7 +38,7 @@ class Test(db.Model):
     answer= db.Column(db.String(256),nullable=False)
     tihao = db.Column(db.Integer,nullable=True)
 
-
+# 考试名
 class Course(db.Model):
     __tablename__="course"
     id = db.Column(db.Integer, primary_key=True)
@@ -46,3 +46,11 @@ class Course(db.Model):
     cname = db.Column(db.String(200),nullable=False)
     # student = db.Column(db.String(256),db.ForeignKey(Student.sid))
     user = db.relationship("User",backref="course",lazy="dynamic")
+
+# 分数
+class Score(db.Model):
+    __tablename__="score"
+    id = db.Column(db.Integer,primary_key = True,autoincrement=True)
+    sid = db.Column(db.String(200),nullable=False)
+    cid = db.Column(db.String(256), nullable=False)
+    score = db.Column(db.Integer,nullable=False)
