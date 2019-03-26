@@ -55,6 +55,22 @@
             "jinja": true
         },
         {
+            "name": "Python: Flask-Nodebug",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/manager.py",
+                // "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                // "--no-debugger",
+                // "--no-reload"
+            ],
+            "jinja": true
+        },
+        {
             "name": "Python: Flask (1.0.2 or later)",
             "type": "python",
             "request": "launch",
