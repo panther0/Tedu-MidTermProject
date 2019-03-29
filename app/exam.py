@@ -47,6 +47,7 @@ def exam():
                 score += 10
         print(score)
 
+        # TODO:JiaJUN:结果导入数据库及结果查询
         return ("考试结束,您获得了%d分"%score)
     tests = db.session.query(Test).filter(Test.course == course).order_by(func.random()).limit(10).all()
     # g.tests = tests
@@ -61,3 +62,21 @@ def setqst():
         pass
 
     return render_template('exam/setqst.html')
+
+
+@bp.route('zxct',methods=('GET','POST'))
+def zxct():
+    courses = db.session.query(Course).all()
+    if request.method == 'POST':
+        list = request.form
+        test = Test()
+        test.course = list["course"]
+        test.timu = list["timu"]
+        test.A = list["A"]
+        test.B = list["B"]
+        test.C = list["C"]
+        test.D = list["D"]
+        test.answer = list["answer"]
+        db.session.add(test)
+
+    return render_template('exam/zxct.html',courses=courses)

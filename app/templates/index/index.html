@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% block header %}
   <h1>{% block title %}Index{% endblock %}</h1>
 {% endblock %}
@@ -11,10 +13,10 @@
         <li><a href="{{ url_for('exam.exam', course='math') }}">Online Exam - math</a>
         <a href="{{ url_for('exam.exam', course='english') }}">Online Exam - english</a>
           
-          <!-- <select name="course" id="course">
+          <select name="course" id="course">
             <option value="math">math</option>
             <option value="english">english</option>
-          </select> -->
+          </select>
         </li>
         <li><a href="{{ url_for('index.index') }}">Check Score</a>
 

@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="02-zxct" method="post">
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <form action="zxct" method="post">
         <p>
-           <select name="zxct" value="course">
+           <select name="course" value="course">
                {% for course in courses %}
-               <option name="{{ course.cid }}">{{ course.cname }}</option>
+               <option name="course">{{ course.cname }}</option>
                {% endfor %}
            </select>
         </p>
@@ -31,15 +27,18 @@
             选项D: <input type="text" name="D">
         </p>
         <p>
-            答案: <input type="text" name="answer">
+            答案:       <input type="radio" name="answer" value="A">A
+            <input type="radio" name="answer" value="B">B
+            <input type="radio" name="answer" value="C">C
+            <input type="radio" name="answer" value="D">D
         </p>
         <p>
             <input type="submit" value="提交">
         </p>
         <p>
-            <a href="/01-file">返回</a>
+            <a href="{{url_for('index')}}">返回</a>
         </p>
 
     </form>
-</body>
-</html>
+
+{% endblock %}

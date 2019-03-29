@@ -11,7 +11,7 @@
 <div>
   <form action="{{url_for('exam.exam',course=course)}}" method="post">
       {% for test in tests %}
-      <h4>{{test.timu}}</h4>
+      <h4>{{loop.index}}. {{test.timu}}</h4>
       <input type="radio" name="{{test.id}}" value="A">{{test.A}}<br>
       <input type="radio" name="{{test.id}}" value="B">{{test.B}}<br>
       <input type="radio" name="{{test.id}}" value="C">{{test.C}}<br>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<table width="400px" height="300px">
+    <form action='/01-file' method='post' enctype="multipart/form-data">
+    <tr>
+    <td width="200px" height="200px">
+    <input type="file" name="files" >
+    </td>
+    <td>
+    <a href=""><input type="button" name="uname" value="考试时间"></a>
+    </td>
+    </tr>
+    <tr><a href="{{url_for('exam.zxct')}}">在线出题</a></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a href=""><input type="submit" name="uname" value="提交"></a></td>
+    </tr>
+    </form>
+    </table>
+{% endblock %}
